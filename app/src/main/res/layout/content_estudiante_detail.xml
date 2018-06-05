@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_estudiantes"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    tools:context=".FragmentEstudiantes">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".EstudianteDetailActivity"
+    tools:showIn="@layout/activity_estudiante_detail">
 
     <TextView
-        android:id="@+id/textViewI"
+        android:id="@+id/textView_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ID: " />
 
     <EditText
-        android:id="@+id/editTextId"
+        android:id="@+id/editText_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textViewN"
+        android:id="@+id/textView_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nombre:" />
 
     <EditText
-        android:id="@+id/editTextNombre"
+        android:id="@+id/editText_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textViewA"
+        android:id="@+id/textView_apellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Apellido:" />
 
     <EditText
-        android:id="@+id/editTextApellido"
+        android:id="@+id/editText_apellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textViewE"
+        android:id="@+id/textView_edad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Edad:" />
 
     <EditText
-        android:id="@+id/editTextEdad"
+        android:id="@+id/editText_edad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -69,19 +67,20 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/buttonVer"
+            android:id="@+id/buttonEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ver" />
+            android:text="Editar" />
 
         <Button
-            android:id="@+id/buttonSave"
+            android:id="@+id/buttonDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Guardar" />
+            android:text="Eliminar" />
 
     </LinearLayout>
+
 
 </LinearLayout>

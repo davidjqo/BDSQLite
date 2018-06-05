@@ -19,6 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ListViewEstudiantes"
+            android:label="@string/title_activity_list_view_estudiantes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EstudianteDetailActivity"
+            android:label="@string/title_activity_estudiante_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

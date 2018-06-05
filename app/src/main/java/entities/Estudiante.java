@@ -1,6 +1,8 @@
-package com.example.david.bdsqlite.Modelo;
+package entities;
 
-public class Estudiante {
+import java.io.Serializable;
+
+public class Estudiante implements Serializable {
     private String id, nombre, apellido;
     private int edad;
 

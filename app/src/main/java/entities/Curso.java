@@ -1,16 +1,16 @@
-package com.example.david.bdsqlite.Modelo;
+package entities;
 
 public class Curso {
-    private String id, descripcion;
-    private int creditos;
+    private String descripcion;
+    private int id, creditos;
 
     public void Estudiante() {
-        this.id = "";
+        this.id = 0;
         this.descripcion = "";
         this.creditos = 0;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -22,7 +22,7 @@ public class Curso {
         this.creditos = creditos;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

@@ -1,13 +1,25 @@
 package com.example.david.bdsqlite;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import adapters.EstudianteListAdapter;
+import database.EstudianteDB;
+import entities.Estudiante;
+import database.*;
+
+import android.view.View;
+import android.widget.*;
+import android.content.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +40,10 @@ public class FragmentEstudiantes extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private Button buttonBack;
+    private Button buttonSave;
+    private EditText editTextId, editTextNombre, editTextApellido, editTextEdad;
 
     public FragmentEstudiantes() {
         // Required empty public constructor
@@ -63,6 +79,52 @@ public class FragmentEstudiantes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view;
+
+        view = inflater.inflate(R.layout.fragment_fragment_estudiantes, container);
+
+        this.editTextId = view.findViewById(R.id.editTextId);
+        this.editTextNombre = view.findViewById(R.id.editTextNombre);
+        this.editTextApellido = view.findViewById(R.id.editTextApellido);
+        this.editTextEdad = view.findViewById(R.id.editTextEdad);
+        this.buttonBack = view.findViewById(R.id.buttonVer);
+
+        this.buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getActivity(), ListViewEstudiantes.class);
+                startActivity(intent1);
+            }
+        });
+
+        this.buttonSave = view.findViewById(R.id.buttonSave);
+        this.buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EstudianteDB estudianteDB = new EstudianteDB(getActivity().getBaseContext());
+                Estudiante estudiante = new Estudiante();
+                estudiante.setId(editTextId.getText().toString());
+                estudiante.setNombre(editTextNombre.getText().toString());
+                estudiante.setApellido(editTextApellido.getText().toString());
+                estudiante.setEdad(Integer.parseInt(editTextEdad.getText().toString()));
+                if (estudianteDB.create(estudiante)) {
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.content_main, new FragmentEstudiantes()).commit();
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("Error");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.create().show();
+                }
+            }
+        });
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fragment_estudiantes, container, false);
     }

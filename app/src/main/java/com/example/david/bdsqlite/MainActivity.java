@@ -16,6 +16,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import adapters.EstudianteListAdapter;
+import entities.*;
+import database.*;
+
+import android.widget.*;
+import android.content.*;
+
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         FragmentEstudiantes.OnFragmentInteractionListener,
@@ -28,8 +36,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_main, new FragmentEstudiantes()).commit();
+        //FragmentManager fragmentManager = getSupportFragmentManager();
+        //fragmentManager.beginTransaction().replace(R.id.content_main, new FragmentEstudiantes()).commit();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +107,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction = true;
         }
 
-        if(fragmentTransaction) {
+        if (fragmentTransaction) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_main, fragment).commit();
 
